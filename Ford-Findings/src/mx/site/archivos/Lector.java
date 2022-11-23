@@ -41,5 +41,8 @@ public class Lector {
 		return br;
 	}
 	
+	public String getFileName() {
+		return FILENAME;
+	}
 
 }
