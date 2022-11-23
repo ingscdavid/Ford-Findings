@@ -55,7 +55,7 @@ public class Comentarios extends JFrame {
 
 		agregaOpciones(jpPanel);
 
-		Utilerias.asignarPosicion(0, numLineas, scrollPane2, jpPanel, 2, GridBagConstraints.HORIZONTAL);
+		Utilerias.asignarPosicion(0, ++numLineas, scrollPane2, jpPanel, 2, GridBagConstraints.HORIZONTAL);
 		jta_textoFinal.setRows(30);
 		jta_textoFinal.setRows(5);
 		numLineas++;
@@ -108,7 +108,7 @@ public class Comentarios extends JFrame {
 			}
 			
 		}
-		if(numLineas%2!=0) {
+		if(numLineas %2 !=0) {
 			numLineas++;
 		}
 
