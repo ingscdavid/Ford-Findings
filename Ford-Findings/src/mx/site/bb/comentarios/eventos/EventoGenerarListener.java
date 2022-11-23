@@ -44,11 +44,10 @@ public class EventoGenerarListener implements ActionListener {
 			JCheckBox jcb = (JCheckBox) it.next();
 
 			if (jcb.isSelected()) {
-				sbComentarioFinal.append(jcb.getToolTipText() + "\n");
+				sbComentarioFinal.append(jcb.getToolTipText() + " ");
 			}
 		}
 
-		sbComentarioFinal.append("\nSaludos,");
 
 		JTextArea jta_textoFinal = comentarios.getJta_textoFinal();
 		jta_textoFinal.setText(sbComentarioFinal.toString());
