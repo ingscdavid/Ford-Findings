@@ -29,7 +29,8 @@ public class Comentarios extends JFrame {
 	private int numLineas = 2;
 	private Set<JCheckBox> opciones = new LinkedHashSet<>();
 	private JTextArea jta_textoFinal;
-	private Dimension size; 
+	private Dimension size;
+	private String fileName;
 	/**
 	 * 
 	 */
@@ -48,8 +49,8 @@ public class Comentarios extends JFrame {
 		
 		
 		
-		JButton jb_Generar = new JButton("GENERAR COMMENT");
-		JButton jb_Borrar = new JButton("BORRAR");
+		JButton jb_Generar = new JButton("GENERATE FINDING");
+		JButton jb_Borrar = new JButton("DELETE");
 		
 		JPanel jpPanel = new JPanel(new GridBagLayout());
 
@@ -67,12 +68,23 @@ public class Comentarios extends JFrame {
 		Utilerias.asignarPosicion(1, numLineas, jb_Borrar, jpPanel);
 		jb_Borrar.addActionListener(new EventoBorrarListener(this));
 		
+		
+		this.fileName = this.fileName.replace("\\","|");
+		
+		System.out.println(this.fileName);
+		
+		for(String name : this.fileName.split("\\|")) {
+			System.out.println(name);
+			this.fileName = name;
+		}
+		
+		
 		setVisible(true);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setContentPane(jpPanel);
 		setSize(350, height);
-		setTitle("COMENTARIOS");
+		setTitle(this.fileName);
 		pack();
 
 		
@@ -84,6 +96,7 @@ public class Comentarios extends JFrame {
 
 		lector = new Lector();
 		BufferedReader br = lector.leerArchivo();
+		this.fileName = lector.getFileName();
 		JCheckBox jcb;
 		String linea;
 		int i = 0;
