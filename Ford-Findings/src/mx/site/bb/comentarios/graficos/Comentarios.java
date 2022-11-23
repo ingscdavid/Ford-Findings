@@ -2,6 +2,8 @@ package mx.site.bb.comentarios.graficos;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Toolkit;
+import java.awt.Dimension;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -30,6 +32,7 @@ public class Comentarios extends JFrame {
 	private JTextField jtf_nombre;
 	private JTextArea jta_textoIntroduccion;
 	private JTextArea jta_textoFinal;
+	private Dimension size; 
 	/**
 	 * 
 	 */
@@ -37,7 +40,10 @@ public class Comentarios extends JFrame {
 
 	public Comentarios() throws IOException {
 		
-		int alto = 1000;
+		size = Toolkit.getDefaultToolkit().getScreenSize();
+		
+		int height = (int) size.getWidth() / 2;
+		
 		
 		jtf_nombre = new JTextField();
 		jta_textoIntroduccion = new JTextArea();
@@ -77,17 +83,13 @@ public class Comentarios extends JFrame {
 		Utilerias.asignarPosicion(1, numLineas, jb_Borrar, jpPanel);
 		jb_Borrar.addActionListener(new EventoBorrarListener(this));
 		
-		int calculo = numLineas*40;
 		
-		if (calculo > 1000){
-			alto = calculo;
-		}
 		
 		setVisible(true);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setContentPane(jpPanel);
-		setSize(350, alto);
+		setSize(350, height);
 		setTitle("COMENTARIOS");
 		pack();
 		jtf_nombre.requestFocusInWindow();
