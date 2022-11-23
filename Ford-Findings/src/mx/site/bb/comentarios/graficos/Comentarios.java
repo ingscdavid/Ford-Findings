@@ -13,11 +13,10 @@ import java.util.Set;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 import mx.site.archivos.Lector;
 import mx.site.bb.comentarios.eventos.EventoBorrarListener;
@@ -29,8 +28,6 @@ public class Comentarios extends JFrame {
 	private Lector lector;
 	private int numLineas = 2;
 	private Set<JCheckBox> opciones = new LinkedHashSet<>();
-	private JTextField jtf_nombre;
-	private JTextArea jta_textoIntroduccion;
 	private JTextArea jta_textoFinal;
 	private Dimension size; 
 	/**
@@ -43,15 +40,8 @@ public class Comentarios extends JFrame {
 		size = Toolkit.getDefaultToolkit().getScreenSize();
 		
 		int height = (int) size.getWidth() / 2;
+				
 		
-		
-		jtf_nombre = new JTextField();
-		jta_textoIntroduccion = new JTextArea();
-		JScrollPane scrollPane1 = new JScrollPane(jta_textoIntroduccion, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-
-		jta_textoIntroduccion.setRows(30);
-		jta_textoIntroduccion.setRows(5);
 		jta_textoFinal = new JTextArea();
 		JScrollPane scrollPane2 = new JScrollPane(jta_textoFinal, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -62,12 +52,6 @@ public class Comentarios extends JFrame {
 		JButton jb_Borrar = new JButton("BORRAR");
 		
 		JPanel jpPanel = new JPanel(new GridBagLayout());
-
-		Utilerias.asignarPosicion(0, 0, new JLabel("Nombre: "), jpPanel);
-		Utilerias.asignarPosicion(1, 0, jtf_nombre, jpPanel);
-		jtf_nombre.setColumns(15);
-
-		Utilerias.asignarPosicion(0, 1, scrollPane1, jpPanel, 2, GridBagConstraints.HORIZONTAL);
 
 		agregaOpciones(jpPanel);
 
@@ -83,8 +67,6 @@ public class Comentarios extends JFrame {
 		Utilerias.asignarPosicion(1, numLineas, jb_Borrar, jpPanel);
 		jb_Borrar.addActionListener(new EventoBorrarListener(this));
 		
-		
-		
 		setVisible(true);
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -92,7 +74,7 @@ public class Comentarios extends JFrame {
 		setSize(350, height);
 		setTitle("COMENTARIOS");
 		pack();
-		jtf_nombre.requestFocusInWindow();
+
 		
 		
 
@@ -140,21 +122,6 @@ public class Comentarios extends JFrame {
 		this.opciones = opciones;
 	}
 
-	public JTextField getJtf_nombre() {
-		return jtf_nombre;
-	}
-
-	public void setJtf_nombre(JTextField jtf_nombre) {
-		this.jtf_nombre = jtf_nombre;
-	}
-
-	public JTextArea getJta_textoIntroduccion() {
-		return jta_textoIntroduccion;
-	}
-
-	public void setJta_textoIntroduccion(JTextArea jta_textoIntroduccion) {
-		this.jta_textoIntroduccion = jta_textoIntroduccion;
-	}
 
 	public JTextArea getJta_textoFinal() {
 		return jta_textoFinal;
